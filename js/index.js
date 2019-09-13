@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         event.preventDefault();
         const value = event.target.elements[1].value;
         if (value) {
-            const list =  document.getElementById('listTodo').innerHTML += `<div><input class="todo-element" type="checkbox">${value}</div>`;
+            document.getElementById('listTodo').innerHTML += `<div><input class="todo-element" type="checkbox">${value}</div>`;
             event.target.elements[1].value = null
         }
     }
@@ -13,6 +13,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
         Array.from(list).forEach((element)=>{
             element.checked = false;
         })
+
+    }
+    document.getElementById('checkAll').onclick = function (event) {
+        const list = document.getElementsByClassName('todo-element');
+        Array.from(list).forEach((element)=>{
+            element.checked = true;
+        })
+
+    }
+    document.getElementById('deleteAll').onclick = function (event) {
+        document.getElementById('listTodo').innerHTML = "";
 
     }
 });
